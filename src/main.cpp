@@ -10,8 +10,11 @@ int main() {
 
 	ComponentFactory::getInstance()->Initialize();
 
-	ComponentFactory::getInstance()->CreateComponentByName("transform");
-	ComponentFactory::getInstance()->CreateComponentByName("body");
+	Transform* transform = (Transform*)ComponentFactory::getInstance()->CreateComponentByName("transform");
+	Body* body = (Body*)ComponentFactory::getInstance()->CreateComponentByName("body");
 
+	delete transform;
+	delete body;
+	
 	return EXIT_SUCCESS;
 }

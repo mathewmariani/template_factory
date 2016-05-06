@@ -1,13 +1,16 @@
 #pragma once
 
+// C/C++
+#include <string>
+
 #define DECLARE_COMPONENT(name) \
     private: \
-		static const char *constClassName;
+		static const std::string constClassName;
 
-//# stringonizer
-//## tokenizer
+// # stringonizer
+// ## tokenizer
 #define REGISTER_COMPONENT(className, scriptName) \
-	const char* className::constClassName = #scriptName; \
+	const std::string className::constClassName = #scriptName; \
 	namespace { \
 		Component* __CreateComponent##className() { \
 			return new className(); \

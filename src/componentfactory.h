@@ -17,15 +17,15 @@ public:
 	void Initialize();
 
 	// function pointer
-	typedef Component* (*ComponentFacotryFunction)();
+	typedef Component* (*ComponentFactoryFunction)();
 
 	static void RegisterComponentFactory(
-		ComponentFacotryFunction,
+		ComponentFactoryFunction factory,
 		const std::string& componentName
 		);
 
 	Component* CreateComponentByName(const std::string& componentName);
 
 private:
-	std::map<std::string, ComponentFacotryFunction> functions;
+	std::map<std::string, ComponentFactoryFunction> functions;
 };

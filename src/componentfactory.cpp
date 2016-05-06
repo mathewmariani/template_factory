@@ -3,7 +3,7 @@
 
 namespace {
 	struct component_factory_register :
-		public template_factory_register<ComponentFactory::ComponentFacotryFunction, component_factory_register> {
+		public template_factory_register<ComponentFactory::ComponentFactoryFunction, component_factory_register> {
 	};
 
 	component_factory_register begin;
@@ -22,14 +22,14 @@ ComponentFactory::ComponentFactory() {
 }
 
 ComponentFactory::~ComponentFactory() {
-	
+
 }
 
 void ComponentFactory::Initialize() {
 	ConvertListToMap(&begin, functions);
 }
 
-void ComponentFactory::RegisterComponentFactory(ComponentFacotryFunction factory, const std::string& componentName) {
+void ComponentFactory::RegisterComponentFactory(ComponentFactoryFunction factory, const std::string& componentName) {
 	RegisterFactory(&begin, factory, componentName);
 }
 
@@ -38,6 +38,6 @@ Component* ComponentFactory::CreateComponentByName(const std::string& componentN
 		return nullptr;
 	}
 
-	ComponentFacotryFunction func = functions[componentName];
+	ComponentFactoryFunction func = functions[componentName];
 	return func();
 }
